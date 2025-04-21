@@ -2,6 +2,12 @@
 
 A shell script that converts the entire project directory (by default) into a Markdown document, embedding each code file as a Markdown code block with syntax highlighting. It automatically ignores common binary assets and folders such as `node_modules`, `.git`, images, videos, and audio.
 
+## Features
+- Converts code files to Markdown with syntax highlighting.
+- Supports common programming languages (`.js`, `.ts`, `.py`, etc.).
+- Automatically detects and highlights extension-less files like `Dockerfile` (```dockerfile), `Makefile` (```make), and `README` (```markdown).
+- Excludes `node_modules`, `.git`, and binary assets for clean output.
+
 
 ## Script
 

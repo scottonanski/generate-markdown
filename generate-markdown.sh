@@ -14,8 +14,15 @@ find "$target" \
     -o -iname "*.h" -o -iname "*.go" -o -iname "*.sh" \
   \) -print | while IFS= read -r file; do
   ext="${file##*.}"
-  # If no extension, leave blank
-  if [[ "$file" == "$ext" ]]; then ext=""; fi
+  # If no extension, leave blank or map to known file types
+  if [[ "$file" == "$ext" ]]; then
+    case "$(basename "$file")" in
+      Dockerfile) ext="dockerfile";;
+      Makefile) ext="make";;
+      README|LICENSE) ext="markdown";;
+      *) ext="";;
+    esac
+  fi
   echo -e "\n### $file\n"
   echo '```'"$ext"
   cat "$file"
